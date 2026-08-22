@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Unit Converter - Free Online Tool</title>
+
+    <meta name="description"
+        content="Convert length, weight, temperature and other units online for free.">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f8ff;
+            color: #172033;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 30px auto;
+            background: white;
+            padding: 30px 20px;
+            border-radius: 18px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            text-align: center;
+            color: #667085;
+            margin-bottom: 30px;
+        }
+
+        .group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        select,
+        input {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ccd3df;
+            border-radius: 9px;
+            font-size: 16px;
+            background: white;
+        }
+
+        .row {
+            display: flex;
+            gap: 12px;
+        }
+
+        .row > div {
+            flex: 1;
+        }
+
+        button {
+            width: 100%;
+            border: none;
+            background: #1769ff;
+            color: white;
+            padding: 14px;
+            border-radius: 9px;
+            font-size: 17px;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+
+        button:hover {
+            background: #0757df;
+        }
+
+        .result {
+            display: none;
+            margin-top: 25px;
+            padding: 22px;
+            background: #f5f8ff;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .result span {
+            display: block;
+            color: #667085;
+            margin-bottom: 8px;
+        }
+
+        .result strong {
+            display: block;
+            font-size: 30px;
+            color: #1769ff;
+            word-break: break-word;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 25px;
+            color: #1769ff;
+            text-decoration: none;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 10px auto;
+                padding: 25px 15px;
+            }
+
+            h1 {
+                font-size: 25px;
+            }
+
+            .row {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>📏 Unit Converter</h1>
+
+    <p class="description">
+        Convert length, weight, temperature and more.
+    </p>
+
+    <div class="group">
+
+        <label for="category">
+            Select Category
+        </label>
+
+        <select id="category" onchange="updateUnits()">
+
+            <option value="length">
+                Length
+            </option>
+
+            <option value="weight">
+                Weight
+            </option>
+
+            <option value="temperature">
+                Temperature
+            </option>
+
+            <option value="area">
+                Area
+            </option>
+
+            <option value="volume">
+                Volume
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <div class="group">
+
+        <label for="amount">
+            Enter Value
+        </label>
+
+        <input
+            type="number"
+            id="amount"
+            placeholder="Enter value"
+            step="any"
+        >
+
+    </div>
+
+
+    <div class="row">
+
+        <div class="group">
+
+            <label for="fromUnit">
+                From
+            </label>
+
+            <select id="fromUnit"></select>
+
+        </div>
+
+
+        <div class="group">
+
+            <label for="toUnit">
+                To
+            </label>
+
+            <select id="toUnit"></select>
+
+        </div>
+
+    </div>
+
+
+    <button onclick="convertUnit()">
+        🔄 Convert
+    </button>
+
+
+    <div
+        class="result"
+        id="result"
+    >
+
+        <span>
+            Result
+        </span>
+
+        <strong id="resultValue">
+            0
+        </strong>
+
+    </div>
+
+
+    <a
+        class="back"
+        href="../index.html"
+    >
+        ← Back to All Tools
+    </a>
+
+</div>
+
+
+<script>
+
+const units = {
+
+    length: {
+
+        meter: {
+            name: "Meter",
+            factor: 1
+        },
+
+        kilometer: {
+            name: "Kilometer",
+            factor: 1000
+        },
+
+        centimeter: {
+            name: "Centimeter",
+            factor: 0.01
+        },
+
+        millimeter: {
+            name: "Millimeter",
+            factor: 0.001
+        },
+
+        mile: {
+            name: "Mile",
+            factor: 1609.344
+        },
+
+        yard: {
+            name: "Yard",
+            factor: 0.9144
+        },
+
+        foot: {
+            name: "Foot",
+            factor: 0.3048
+        },
+
+        inch: {
+            name: "Inch",
+            factor: 0.0254
+        }
+
+    },
+
+
+    weight: {
+
+        kilogram: {
+            name: "Kilogram",
+            factor: 1
+        },
+
+        gram: {
+            name: "Gram",
+            factor: 0.001
+        },
+
+        milligram: {
+            name: "Milligram",
+            factor: 0.000001
+        },
+
+        pound: {
+            name: "Pound",
+            factor: 0.45359237
+        },
+
+        ounce: {
+            name: "Ounce",
+            factor: 0.0283495231
+        }
+
+    },
+
+
+    area: {
+
+        squareMeter: {
+            name: "Square Meter",
+            factor: 1
+        },
+
+        squareKilometer: {
+            name: "Square Kilometer",
+            factor: 1000000
+        },
+
+        squareFoot: {
+            name: "Square Foot",
+            factor: 0.09290304
+        },
+
+        squareYard: {
+            name: "Square Yard",
+            factor: 0.83612736
+        },
+
+        acre: {
+            name: "Acre",
+            factor: 4046.8564224
+        },
+
+        hectare: {
+            name: "Hectare",
+            factor: 10000
+        }
+
+    },
+
+
+    volume: {
+
+        liter: {
+            name: "Liter",
+            factor: 1
+        },
+
+        milliliter: {
+            name: "Milliliter",
+            factor: 0.001
+        },
+
+        cubicMeter: {
+            name: "Cubic Meter",
+            factor: 1000
+        },
+
+        gallon: {
+            name: "US Gallon",
+            factor: 3.785411784
+        },
+
+        quart: {
+            name: "US Quart",
+            factor: 0.946352946
+        }
+
+    }
+
+};
+
+
+function updateUnits() {
+
+    const category =
+        document.getElementById(
+            "category"
+        ).value;
+
+    const from =
+        document.getElementById(
+            "fromUnit"
+        );
+
+    const to =
+        document.getElementById(
+            "toUnit"
+        );
+
+
+    from.innerHTML = "";
+    to.innerHTML = "";
+
+
+    if (category === "temperature") {
+
+        addOption(
+            from,
+            "celsius",
+            "Celsius"
+        );
+
+        addOption(
+            from,
+            "fahrenheit",
+            "Fahrenheit"
+        );
+
+        addOption(
+            from,
+            "kelvin",
+            "Kelvin"
+        );
+
+
+        addOption(
+            to,
+            "celsius",
+            "Celsius"
+        );
+
+        addOption(
+            to,
+            "fahrenheit",
+            "Fahrenheit"
+        );
+
+        addOption(
+            to,
+            "kelvin",
+            "Kelvin"
+        );
+
+    } else {
+
+        Object.keys(
+            units[category]
+        ).forEach(function(key) {
+
+            addOption(
+                from,
+                key,
+                units[category][key].name
+            );
+
+            addOption(
+                to,
+                key,
+                units[category][key].name
+            );
+
+        });
+
+    }
+}
+
+
+function addOption(
+    select,
+    value,
+    text
+) {
+
+    const option =
+        document.createElement(
+            "option"
+        );
+
+    option.value = value;
+    option.textContent = text;
+
+    select.appendChild(option);
+}
+
+
+function convertUnit() {
+
+    const category =
+        document.getElementById(
+            "category"
+        ).value;
+
+    const amount =
+        Number(
+            document.getElementById(
+                "amount"
+            ).value
+        );
+
+    const from =
+        document.getElementById(
+            "fromUnit"
+        ).value;
+
+    const to =
+        document.getElementById(
+            "toUnit"
+        ).value;
+
+
+    if (
+        !Number.isFinite(amount)
+    ) {
+
+        alert(
+            "Please enter a valid number."
+        );
+
+        return;
+    }
+
+
+    let result;
+
+
+    if (
+        category === "temperature"
+    ) {
+
+        result =
+            convertTemperature(
+                amount,
+                from,
+                to
+            );
+
+    } else {
+
+        const baseValue =
+            amount *
+            units[category][from].factor;
+
+        result =
+            baseValue /
+            units[category][to].factor;
+    }
+
+
+    document.getElementById(
+        "resultValue"
+    ).textContent =
+        Number(
+            result.toFixed(8)
+        );
+
+
+    document.getElementById(
+        "result"
+    ).style.display =
+        "block";
+}
+
+
+function convertTemperature(
+    value,
+    from,
+    to
+) {
+
+    let celsius;
+
+
+    if (from === "celsius") {
+
+        celsius = value;
+
+    } else if (
+        from === "fahrenheit"
+    ) {
+
+        celsius =
+            (value - 32) *
+            5 / 9;
+
+    } else {
+
+        celsius =
+            value - 273.15;
+    }
+
+
+    if (to === "celsius") {
+
+        return celsius;
+
+    } else if (
+        to === "fahrenheit"
+    ) {
+
+        return (
+            celsius *
+            9 / 5
+        ) + 32;
+
+    } else {
+
+        return celsius + 273.15;
+    }
+}
+
+
+updateUnits();
+
+</script>
+
+</body>
+</html>
