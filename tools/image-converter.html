@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Image Converter - JPG PNG WebP</title>
+
+    <meta name="description"
+        content="Convert images between JPG, PNG and WebP formats online for free.">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f8ff;
+            color: #172033;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 30px auto;
+            background: white;
+            padding: 30px 20px;
+            border-radius: 18px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        .description {
+            color: #667085;
+            margin-bottom: 25px;
+        }
+
+        .upload-box {
+            border: 2px dashed #1769ff;
+            border-radius: 15px;
+            padding: 35px 15px;
+            margin-bottom: 25px;
+        }
+
+        input[type="file"] {
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .format-box {
+            margin: 25px 0;
+        }
+
+        .format-box label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        select {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ccd3df;
+            border-radius: 9px;
+            font-size: 16px;
+            background: white;
+        }
+
+        button {
+            border: none;
+            background: #1769ff;
+            color: white;
+            padding: 13px 22px;
+            border-radius: 9px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 6px;
+        }
+
+        button:hover {
+            background: #0757df;
+        }
+
+        .download {
+            background: #172033;
+        }
+
+        .download:hover {
+            background: #000;
+        }
+
+        #preview {
+            max-width: 100%;
+            max-height: 350px;
+            margin: 25px auto;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 18px;
+            background: #f5f8ff;
+            border-radius: 10px;
+            display: none;
+            line-height: 1.8;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #1769ff;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 10px auto;
+                padding: 25px 15px;
+            }
+
+            h1 {
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🔄 Image Converter</h1>
+
+    <p class="description">
+        Convert your image to JPG, PNG or WebP format.
+    </p>
+
+
+    <div class="upload-box">
+
+        <h3>Select an Image</h3>
+
+        <input
+            type="file"
+            id="imageInput"
+            accept="image/*"
+        >
+
+    </div>
+
+
+    <div class="format-box">
+
+        <label for="format">
+            Select Output Format
+        </label>
+
+        <select id="format">
+
+            <option value="image/jpeg">
+                JPG
+            </option>
+
+            <option value="image/png">
+                PNG
+            </option>
+
+            <option value="image/webp">
+                WebP
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <button onclick="convertImage()">
+        🔄 Convert Image
+    </button>
+
+
+    <img
+        id="preview"
+        alt="Converted image preview"
+    >
+
+
+    <div
+        class="result"
+        id="result"
+    >
+
+        <p>
+            Output Format:
+            <strong id="outputFormat">-</strong>
+        </p>
+
+        <p>
+            Converted Size:
+            <strong id="outputSize">-</strong>
+        </p>
+
+        <a
+            id="downloadLink"
+            download="converted-image"
+        >
+
+            <button class="download">
+                ⬇️ Download Image
+            </button>
+
+        </a>
+
+    </div>
+
+
+    <a
+        class="back"
+        href="../index.html"
+    >
+        ← Back to All Tools
+    </a>
+
+</div>
+
+
+<script>
+
+const imageInput =
+    document.getElementById("imageInput");
+
+
+function formatBytes(bytes) {
+
+    if (bytes === 0)
+        return "0 Bytes";
+
+    const units = [
+        "Bytes",
+        "KB",
+        "MB",
+        "GB"
+    ];
+
+    const i =
+        Math.floor(
+            Math.log(bytes) /
+            Math.log(1024)
+        );
+
+    return (
+        parseFloat(
+            (
+                bytes /
+                Math.pow(1024, i)
+            ).toFixed(2)
+        )
+        +
+        " " +
+        units[i]
+    );
+}
+
+
+function convertImage() {
+
+    const file =
+        imageInput.files[0];
+
+    if (!file) {
+
+        alert(
+            "Please select an image first."
+        );
+
+        return;
+    }
+
+
+    const format =
+        document.getElementById(
+            "format"
+        ).value;
+
+
+    const reader =
+        new FileReader();
+
+
+    reader.onload =
+        function(event) {
+
+            const img =
+                new Image();
+
+
+            img.onload =
+                function() {
+
+                    const canvas =
+                        document.createElement(
+                            "canvas"
+                        );
+
+
+                    canvas.width =
+                        img.width;
+
+                    canvas.height =
+                        img.height;
+
+
+                    const ctx =
+                        canvas.getContext(
+                            "2d"
+                        );
+
+
+                    ctx.drawImage(
+                        img,
+                        0,
+                        0
+                    );
+
+
+                    canvas.toBlob(
+                        function(blob) {
+
+                            if (!blob) {
+
+                                alert(
+                                    "Conversion failed."
+                                );
+
+                                return;
+                            }
+
+
+                            const url =
+                                URL.createObjectURL(
+                                    blob
+                                );
+
+
+                            const preview =
+                                document.getElementById(
+                                    "preview"
+                                );
+
+
+                            preview.src =
+                                url;
+
+                            preview.style.display =
+                                "block";
+
+
+                            let extension;
+
+                            if (
+                                format ===
+                                "image/jpeg"
+                            ) {
+                                extension = "jpg";
+                            }
+                            else if (
+                                format ===
+                                "image/png"
+                            ) {
+                                extension = "png";
+                            }
+                            else {
+                                extension = "webp";
+                            }
+
+
+                            document.getElementById(
+                                "outputFormat"
+                            ).textContent =
+                                extension.toUpperCase();
+
+
+                            document.getElementById(
+                                "outputSize"
+                            ).textContent =
+                                formatBytes(
+                                    blob.size
+                                );
+
+
+                            const downloadLink =
+                                document.getElementById(
+                                    "downloadLink"
+                                );
+
+
+                            downloadLink.href =
+                                url;
+
+                            downloadLink.download =
+                                "converted-image." +
+                                extension;
+
+
+                            document.getElementById(
+                                "result"
+                            ).style.display =
+                                "block";
+
+                        },
+                        format,
+                        0.92
+                    );
+
+                };
+
+
+            img.src =
+                event.target.result;
+
+        };
+
+
+    reader.readAsDataURL(file);
+}
+
+</script>
+
+</body>
+  </html>
