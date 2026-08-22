@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Word Counter - Free Online Tool</title>
+
+    <meta name="description"
+        content="Count words, characters, sentences and paragraphs online for free.">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f8ff;
+            color: #172033;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 750px;
+            margin: 30px auto;
+            background: white;
+            padding: 30px 20px;
+            border-radius: 18px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            text-align: center;
+            color: #667085;
+            margin-bottom: 25px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 300px;
+            padding: 18px;
+            border: 2px solid #d9e0eb;
+            border-radius: 12px;
+            resize: vertical;
+            font-size: 17px;
+            line-height: 1.6;
+            outline: none;
+        }
+
+        textarea:focus {
+            border-color: #1769ff;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stat {
+            background: #f5f8ff;
+            padding: 18px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .stat strong {
+            display: block;
+            font-size: 28px;
+            color: #1769ff;
+            margin-bottom: 5px;
+        }
+
+        .stat span {
+            color: #667085;
+        }
+
+        .clear-btn {
+            display: block;
+            margin: 20px auto 5px;
+            border: none;
+            background: #172033;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 9px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .clear-btn:hover {
+            background: #000;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 25px;
+            text-decoration: none;
+            color: #1769ff;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 10px auto;
+                padding: 25px 15px;
+            }
+
+            h1 {
+                font-size: 25px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>📝 Word Counter</h1>
+
+    <p class="description">
+        Count words, characters, sentences and paragraphs instantly.
+    </p>
+
+    <textarea
+        id="textInput"
+        placeholder="Start typing or paste your text here..."
+    ></textarea>
+
+    <div class="stats">
+
+        <div class="stat">
+            <strong id="wordCount">0</strong>
+            <span>Words</span>
+        </div>
+
+        <div class="stat">
+            <strong id="characterCount">0</strong>
+            <span>Characters</span>
+        </div>
+
+        <div class="stat">
+            <strong id="characterNoSpace">0</strong>
+            <span>Without Spaces</span>
+        </div>
+
+        <div class="stat">
+            <strong id="sentenceCount">0</strong>
+            <span>Sentences</span>
+        </div>
+
+        <div class="stat">
+            <strong id="paragraphCount">0</strong>
+            <span>Paragraphs</span>
+        </div>
+
+        <div class="stat">
+            <strong id="readingTime">0 min</strong>
+            <span>Reading Time</span>
+        </div>
+
+    </div>
+
+    <button
+        class="clear-btn"
+        onclick="clearText()"
+    >
+        🗑️ Clear Text
+    </button>
+
+    <a
+        class="back"
+        href="../index.html"
+    >
+        ← Back to All Tools
+    </a>
+
+</div>
+
+
+<script>
+
+const textInput =
+    document.getElementById("textInput");
+
+
+textInput.addEventListener(
+    "input",
+    countText
+);
+
+
+function countText() {
+
+    const text =
+        textInput.value;
+
+
+    // WORDS
+    const trimmed =
+        text.trim();
+
+    const words =
+        trimmed
+        ? trimmed.split(/\s+/).length
+        : 0;
+
+
+    // CHARACTERS
+    const characters =
+        text.length;
+
+
+    // CHARACTERS WITHOUT SPACES
+    const noSpaces =
+        text.replace(/\s/g, "").length;
+
+
+    // SENTENCES
+    const sentenceMatches =
+        text.match(
+            /[^.!?]+[.!?]+/g
+        );
+
+    const sentences =
+        sentenceMatches
+        ? sentenceMatches.length
+        : (trimmed ? 1 : 0);
+
+
+    // PARAGRAPHS
+    const paragraphMatches =
+        text
+        .split(/\n\s*\n/)
+        .filter(
+            paragraph =>
+                paragraph.trim().length > 0
+        );
+
+    const paragraphs =
+        paragraphMatches.length;
+
+
+    // READING TIME
+    const minutes =
+        words === 0
+        ? 0
+        : Math.ceil(words / 200);
+
+
+    document.getElementById(
+        "wordCount"
+    ).textContent =
+        words;
+
+
+    document.getElementById(
+        "characterCount"
+    ).textContent =
+        characters;
+
+
+    document.getElementById(
+        "characterNoSpace"
+    ).textContent =
+        noSpaces;
+
+
+    document.getElementById(
+        "sentenceCount"
+    ).textContent =
+        sentences;
+
+
+    document.getElementById(
+        "paragraphCount"
+    ).textContent =
+        paragraphs;
+
+
+    document.getElementById(
+        "readingTime"
+    ).textContent =
+        minutes + " min";
+}
+
+
+function clearText() {
+
+    textInput.value = "";
+
+    countText();
+}
+
+</script>
+
+</body>
+</html>
