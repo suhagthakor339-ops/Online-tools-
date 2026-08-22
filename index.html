@@ -18,24 +18,32 @@
     <!-- HEADER -->
     <header>
 
-        <h1>🛠️ Free Online Tools</h1>
+        <div class="hero">
 
-        <p>
-            Fast, simple and free tools for everyday use
-        </p>
+            <div class="hero-badge">
+                ⚡ 100% Free Online Tools
+            </div>
 
-        <!-- SEARCH -->
-        <div class="search-box">
+            <h1>🛠️ Free Online Tools</h1>
 
-            <input
-                type="text"
-                id="searchInput"
-                placeholder="Search a tool..."
-            >
+            <p>
+                Fast, simple and free tools for your everyday needs
+            </p>
 
-            <button onclick="searchTools()">
-                Search
-            </button>
+            <!-- SEARCH -->
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="🔍 Search a tool..."
+                >
+
+                <button onclick="searchTools()">
+                    Search
+                </button>
+
+            </div>
 
         </div>
 
@@ -45,166 +53,305 @@
     <!-- MAIN -->
     <main class="container">
 
-        <div class="section-title">
 
-            <h2>Popular Tools</h2>
+        <!-- WELCOME -->
+        <section class="welcome-section">
+
+            <h2>All Tools</h2>
 
             <p>
-                Choose a tool and get started
+                Choose a category or select any tool below
             </p>
 
-        </div>
+        </section>
 
 
-        <!-- TOOLS -->
-        <div class="tools-grid">
+        <!-- IMAGE TOOLS -->
+        <section class="tool-category">
 
+            <div class="category-header">
 
-            <!-- IMAGE COMPRESSOR -->
-            <div class="tool-card">
+                <div>
+                    <span class="category-icon">🖼️</span>
 
-                <div class="tool-icon">🖼️</div>
+                    <h2>Image Tools</h2>
 
-                <h3>Image Compressor</h3>
-
-                <p>
-                    Compress images and reduce file size easily.
-                </p>
-
-                <a href="tools/image-compressor.html">
-                    Use Tool
-                </a>
+                    <p>
+                        Compress, resize and convert your images easily.
+                    </p>
+                </div>
 
             </div>
 
 
-            <!-- IMAGE RESIZER -->
-            <div class="tool-card">
+            <div class="tools-grid">
 
-                <div class="tool-icon">📐</div>
 
-                <h3>Image Resizer</h3>
+                <!-- IMAGE COMPRESSOR -->
+                <div class="tool-card">
 
-                <p>
-                    Resize your images to the required dimensions.
-                </p>
+                    <div class="tool-icon">🖼️</div>
 
-                <a href="tools/image-resizer.html">
-                    Use Tool
-                </a>
+                    <h3>Image Compressor</h3>
+
+                    <p>
+                        Compress images and reduce file size easily.
+                    </p>
+
+                    <a href="tools/image-compressor.html">
+                        Use Tool →
+                    </a>
+
+                </div>
+
+
+                <!-- IMAGE RESIZER -->
+                <div class="tool-card">
+
+                    <div class="tool-icon">📐</div>
+
+                    <h3>Image Resizer</h3>
+
+                    <p>
+                        Resize your images to the required dimensions.
+                    </p>
+
+                    <a href="tools/image-resizer.html">
+                        Use Tool →
+                    </a>
+
+                </div>
+
+
+                <!-- IMAGE CONVERTER -->
+                <div class="tool-card">
+
+                    <div class="tool-icon">🔄</div>
+
+                    <h3>Image Converter</h3>
+
+                    <p>
+                        Convert JPG, PNG and WebP images easily.
+                    </p>
+
+                    <a href="tools/image-converter.html">
+                        Use Tool →
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- TEXT & QR TOOLS -->
+        <section class="tool-category">
+
+            <div class="category-header">
+
+                <div>
+                    <span class="category-icon">📝</span>
+
+                    <h2>Text & QR Tools</h2>
+
+                    <p>
+                        Useful tools for text counting and QR code creation.
+                    </p>
+                </div>
 
             </div>
 
 
-            <!-- IMAGE CONVERTER -->
-            <div class="tool-card">
+            <div class="tools-grid">
 
-                <div class="tool-icon">🔄</div>
 
-                <h3>Image Converter</h3>
+                <!-- QR GENERATOR -->
+                <div class="tool-card">
 
-                <p>
-                    Convert JPG, PNG and WebP images easily.
-                </p>
+                    <div class="tool-icon">🔲</div>
 
-                <a href="tools/image-converter.html">
-                    Use Tool
-                </a>
+                    <h3>QR Code Generator</h3>
+
+                    <p>
+                        Create QR codes quickly from text or links.
+                    </p>
+
+                    <a href="tools/qr-generator.html">
+                        Use Tool →
+                    </a>
+
+                </div>
+
+
+                <!-- WORD COUNTER -->
+                <div class="tool-card">
+
+                    <div class="tool-icon">📝</div>
+
+                    <h3>Word Counter</h3>
+
+                    <p>
+                        Count words, characters and sentences.
+                    </p>
+
+                    <a href="tools/word-counter.html">
+                        Use Tool →
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- CALCULATOR TOOLS -->
+        <section class="tool-category">
+
+            <div class="category-header">
+
+                <div>
+                    <span class="category-icon">🧮</span>
+
+                    <h2>Calculator Tools</h2>
+
+                    <p>
+                        Quickly calculate age, EMI and other useful values.
+                    </p>
+                </div>
 
             </div>
 
 
-            <!-- QR GENERATOR -->
-            <div class="tool-card">
+            <div class="tools-grid">
 
-                <div class="tool-icon">🔲</div>
 
-                <h3>QR Code Generator</h3>
+                <!-- AGE CALCULATOR -->
+                <div class="tool-card">
 
-                <p>
-                    Create QR codes quickly from text or links.
-                </p>
+                    <div class="tool-icon">🎂</div>
 
-                <a href="tools/qr-generator.html">
-                    Use Tool
-                </a>
+                    <h3>Age Calculator</h3>
+
+                    <p>
+                        Calculate your exact age from your date of birth.
+                    </p>
+
+                    <a href="tools/age-calculator.html">
+                        Use Tool →
+                    </a>
+
+                </div>
+
+
+                <!-- EMI CALCULATOR -->
+                <div class="tool-card">
+
+                    <div class="tool-icon">💰</div>
+
+                    <h3>EMI Calculator</h3>
+
+                    <p>
+                        Calculate monthly EMI for your loan.
+                    </p>
+
+                    <a href="tools/emi-calculator.html">
+                        Use Tool →
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- CONVERTER TOOLS -->
+        <section class="tool-category">
+
+            <div class="category-header">
+
+                <div>
+                    <span class="category-icon">🔄</span>
+
+                    <h2>Converter Tools</h2>
+
+                    <p>
+                        Convert different units quickly and easily.
+                    </p>
+
+                </div>
 
             </div>
 
 
-            <!-- WORD COUNTER -->
-            <div class="tool-card">
+            <div class="tools-grid">
 
-                <div class="tool-icon">📝</div>
 
-                <h3>Word Counter</h3>
+                <!-- UNIT CONVERTER -->
+                <div class="tool-card">
 
-                <p>
-                    Count words, characters and sentences.
-                </p>
+                    <div class="tool-icon">📏</div>
 
-                <a href="tools/word-counter.html">
-                    Use Tool
-                </a>
+                    <h3>Unit Converter</h3>
+
+                    <p>
+                        Convert length, weight, temperature and more.
+                    </p>
+
+                    <a href="tools/unit-converter.html">
+                        Use Tool →
+                    </a>
+
+                </div>
+
 
             </div>
 
-
-            <!-- AGE CALCULATOR -->
-            <div class="tool-card">
-
-                <div class="tool-icon">🎂</div>
-
-                <h3>Age Calculator</h3>
-
-                <p>
-                    Calculate your exact age from your date of birth.
-                </p>
-
-                <a href="tools/age-calculator.html">
-                    Use Tool
-                </a>
-
-            </div>
+        </section>
 
 
-            <!-- EMI CALCULATOR -->
-            <div class="tool-card">
+        <!-- WHY USE OUR TOOLS -->
+        <section class="why-section">
 
-                <div class="tool-icon">💰</div>
+            <h2>Why Use Our Tools?</h2>
 
-                <h3>EMI Calculator</h3>
+            <div class="features-grid">
 
-                <p>
-                    Calculate monthly EMI for your loan.
-                </p>
-
-                <a href="tools/emi-calculator.html">
-                    Use Tool
-                </a>
-
-            </div>
+                <div class="feature-card">
+                    <div>⚡</div>
+                    <h3>Fast</h3>
+                    <p>
+                        Get results quickly without complicated steps.
+                    </p>
+                </div>
 
 
-            <!-- UNIT CONVERTER -->
-            <div class="tool-card">
+                <div class="feature-card">
+                    <div>🆓</div>
+                    <h3>Free</h3>
+                    <p>
+                        Use our online tools without paying.
+                    </p>
+                </div>
 
-                <div class="tool-icon">📏</div>
 
-                <h3>Unit Converter</h3>
-
-                <p>
-                    Convert length, weight, temperature and more.
-                </p>
-
-                <a href="tools/unit-converter.html">
-                    Use Tool
-                </a>
+                <div class="feature-card">
+                    <div>📱</div>
+                    <h3>Mobile Friendly</h3>
+                    <p>
+                        Tools are designed to work on phones and computers.
+                    </p>
+                </div>
 
             </div>
 
+        </section>
 
-        </div>
 
     </main>
 
