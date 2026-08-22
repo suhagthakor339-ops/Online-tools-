@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Image Resizer - Free Online Tool</title>
+
+    <meta name="description"
+        content="Resize images online for free. Change image width and height and download the resized image.">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f8ff;
+            color: #172033;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 30px auto;
+            background: white;
+            padding: 30px 20px;
+            border-radius: 18px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        .description {
+            color: #667085;
+            margin-bottom: 25px;
+        }
+
+        .upload-box {
+            border: 2px dashed #1769ff;
+            border-radius: 15px;
+            padding: 35px 15px;
+            margin-bottom: 25px;
+        }
+
+        input[type="file"] {
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .dimensions {
+            display: flex;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .input-group {
+            flex: 1;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccd3df;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .lock-box {
+            margin: 15px 0;
+        }
+
+        button {
+            border: none;
+            background: #1769ff;
+            color: white;
+            padding: 13px 22px;
+            border-radius: 9px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 6px;
+        }
+
+        button:hover {
+            background: #0757df;
+        }
+
+        .download {
+            background: #172033;
+        }
+
+        .download:hover {
+            background: #000;
+        }
+
+        #preview {
+            max-width: 100%;
+            max-height: 350px;
+            margin: 20px auto;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .info {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f5f8ff;
+            border-radius: 10px;
+            display: none;
+            line-height: 1.8;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #1769ff;
+        }
+
+        @media (max-width: 480px) {
+
+            .container {
+                margin: 10px auto;
+                padding: 25px 15px;
+            }
+
+            h1 {
+                font-size: 25px;
+            }
+
+            .dimensions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>📐 Image Resizer</h1>
+
+    <p class="description">
+        Resize your image to any width and height.
+    </p>
+
+
+    <div class="upload-box">
+
+        <h3>Select an Image</h3>
+
+        <input
+            type="file"
+            id="imageInput"
+            accept="image/*"
+        >
+
+    </div>
+
+
+    <div class="dimensions">
+
+        <div class="input-group">
+
+            <label for="width">
+                Width (px)
+            </label>
+
+            <input
+                type="number"
+                id="width"
+                placeholder="Width"
+            >
+
+        </div>
+
+
+        <div class="input-group">
+
+            <label for="height">
+                Height (px)
+            </label>
+
+            <input
+                type="number"
+                id="height"
+                placeholder="Height"
+            >
+
+        </div>
+
+    </div>
+
+
+    <div class="lock-box">
+
+        <label>
+            <input
+                type="checkbox"
+                id="lockRatio"
+                checked
+            >
+
+            Lock Aspect Ratio
+        </label>
+
+    </div>
+
+
+    <button onclick="resizeImage()">
+        Resize Image
+    </button>
+
+
+    <img
+        id="preview"
+        alt="Resized image preview"
+    >
+
+
+    <div
+        class="info"
+        id="info"
+    >
+
+        <p>
+            Original:
+            <strong id="originalDimensions">-</strong>
+        </p>
+
+        <p>
+            New Size:
+            <strong id="newDimensions">-</strong>
+        </p>
+
+        <p>
+            File Size:
+            <strong id="fileSize">-</strong>
+        </p>
+
+        <a
+            id="downloadLink"
+            download="resized-image.jpg"
+        >
+
+            <button class="download">
+                ⬇️ Download Image
+            </button>
+
+        </a>
+
+    </div>
+
+
+    <a
+        class="back"
+        href="../index.html"
+    >
+        ← Back to All Tools
+    </a>
+
+</div>
+
+
+<script>
+
+const imageInput =
+    document.getElementById("imageInput");
+
+const widthInput =
+    document.getElementById("width");
+
+const heightInput =
+    document.getElementById("height");
+
+const lockRatio =
+    document.getElementById("lockRatio");
+
+
+let originalWidth = 0;
+let originalHeight = 0;
+let aspectRatio = 1;
+
+
+imageInput.addEventListener(
+    "change",
+    function () {
+
+        const file = imageInput.files[0];
+
+        if (!file) return;
+
+        const reader = new FileReader();
+
+        reader.onload = function (event) {
+
+            const img = new Image();
+
+            img.onload = function () {
+
+                originalWidth = img.width;
+                originalHeight = img.height;
+
+                aspectRatio =
+                    originalWidth / originalHeight;
+
+                widthInput.value =
+                    originalWidth;
+
+                heightInput.value =
+                    originalHeight;
+
+            };
+
+            img.src = event.target.result;
+
+        };
+
+        reader.readAsDataURL(file);
+
+    }
+);
+
+
+widthInput.addEventListener(
+    "input",
+    function () {
+
+        if (
+            lockRatio.checked &&
+            originalWidth > 0
+        ) {
+
+            heightInput.value =
+                Math.round(
+                    Number(widthInput.value)
+                    / aspectRatio
+                );
+
+        }
+
+    }
+);
+
+
+heightInput.addEventListener(
+    "input",
+    function () {
+
+        if (
+            lockRatio.checked &&
+            originalHeight > 0
+        ) {
+
+            widthInput.value =
+                Math.round(
+                    Number(heightInput.value)
+                    * aspectRatio
+                );
+
+        }
+
+    }
+);
+
+
+function resizeImage() {
+
+    const file =
+        imageInput.files[0];
+
+    if (!file) {
+
+        alert(
+            "Please select an image first."
+        );
+
+        return;
+    }
+
+
+    const newWidth =
+        Number(widthInput.value);
+
+    const newHeight =
+        Number(heightInput.value);
+
+
+    if (
+        newWidth <= 0 ||
+        newHeight <= 0
+    ) {
+
+        alert(
+            "Please enter valid width and height."
+        );
+
+        return;
+    }
+
+
+    const reader =
+        new FileReader();
+
+
+    reader.onload =
+        function (event) {
+
+            const img =
+                new Image();
+
+
+            img.onload =
+                function () {
+
+                    const canvas =
+                        document.createElement(
+                            "canvas"
+                        );
+
+
+                    canvas.width =
+                        newWidth;
+
+                    canvas.height =
+                        newHeight;
+
+
+                    const ctx =
+                        canvas.getContext(
+                            "2d"
+                        );
+
+
+                    ctx.drawImage(
+                        img,
+                        0,
+                        0,
+                        newWidth,
+                        newHeight
+                    );
+
+
+                    canvas.toBlob(
+                        function (blob) {
+
+                            const url =
+                                URL.createObjectURL(
+                                    blob
+                                );
+
+
+                            const preview =
+                                document.getElementById(
+                                    "preview"
+                                );
+
+
+                            preview.src =
+                                url;
+
+                            preview.style.display =
+                                "block";
+
+
+                            document.getElementById(
+                                "originalDimensions"
+                            ).textContent =
+                                originalWidth +
+                                " × " +
+                                originalHeight +
+                                " px";
+
+
+                            document.getElementById(
+                                "newDimensions"
+                            ).textContent =
+                                newWidth +
+                                " × " +
+                                newHeight +
+                                " px";
+
+
+                            document.getElementById(
+                                "fileSize"
+                            ).textContent =
+                                formatBytes(
+                                    blob.size
+                                );
+
+
+                            const downloadLink =
+                                document.getElementById(
+                                    "downloadLink"
+                                );
+
+
+                            downloadLink.href =
+                                url;
+
+
+                            document.getElementById(
+                                "info"
+                            ).style.display =
+                                "block";
+
+                        },
+                        "image/jpeg",
+                        0.92
+                    );
+
+                };
+
+
+            img.src =
+                event.target.result;
+
+        };
+
+
+    reader.readAsDataURL(file);
+
+}
+
+
+function formatBytes(bytes) {
+
+    if (bytes === 0)
+        return "0 Bytes";
+
+
+    const units = [
+        "Bytes",
+        "KB",
+        "MB",
+        "GB"
+    ];
+
+
+    const i =
+        Math.floor(
+            Math.log(bytes)
+            / Math.log(1024)
+        );
+
+
+    return (
+        parseFloat(
+            (
+                bytes /
+                Math.pow(1024, i)
+            ).toFixed(2)
+        )
+        +
+        " " +
+        units[i]
+    );
+
+}
+
+</script>
+
+</body>
+</html>
