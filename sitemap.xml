@@ -3,79 +3,79 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>https://YOUR-GITHUB-USERNAME.github.io/YOUR-REPOSITORY/</loc>
+        <loc>https://suhagthakor339-ops.github.io/Online-tools-/</loc>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
 
     <url>
-        <loc>https://YOUR-GITHUB-USERNAME.github.io/YOUR-REPOSITORY/about.html</loc>
+        <loc>https://suhagthakor339-ops.github.io/Online-tools-/about.html</loc>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
-        <loc>https://YOUR-GITHUB-USERNAME.github.io/YOUR-REPOSITORY/privacy-policy.html</loc>
+        <loc>https://suhagthakor339-ops.github.io/Online-tools-/privacy-policy.html</loc>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
 
     <url>
-        <loc>https://YOUR-GITHUB-USERNAME.github.io/YOUR-REPOSITORY/terms.html</loc>
+        <loc>https://suhagthakor339-ops.github.io/Online-tools-/terms.html</loc>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
 
     <url>
-        <loc>https://YOUR-GITHUB-USERNAME.github.io/YOUR-REPOSITORY/contact.html</loc>
+        <loc>https://suhagthakor339-ops.github.io/Online-tools-/contact.html</loc>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
 
     <url>
-        <loc>https://YOUR-GITHUB-USERNAME.github.io/YOUR-REPOSITORY/tools/image-compressor.html</loc>
+        <loc>https://suhagthakor339-ops.github.io/Online-tools-/tools/image-compressor.html</loc>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://YOUR-GITHUB-USERNAME.github.io/YOUR-REPOSITORY/tools/image-resizer.html</loc>
+        <loc>https://suhagthakor339-ops.github.io/Online-tools-/tools/image-resizer.html</loc>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://YOUR-GITHUB-USERNAME.github.io/YOUR-REPOSITORY/tools/image-converter.html</loc>
+        <loc>https://suhagthakor339-ops.github.io/Online-tools-/tools/image-converter.html</loc>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://YOUR-GITHUB-USERNAME.github.io/YOUR-REPOSITORY/tools/qr-generator.html</loc>
+        <loc>https://suhagthakor339-ops.github.io/Online-tools-/tools/qr-generator.html</loc>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://YOUR-GITHUB-USERNAME.github.io/YOUR-REPOSITORY/tools/word-counter.html</loc>
+        <loc>https://suhagthakor339-ops.github.io/Online-tools-/tools/word-counter.html</loc>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://YOUR-GITHUB-USERNAME.github.io/YOUR-REPOSITORY/tools/age-calculator.html</loc>
+        <loc>https://suhagthakor339-ops.github.io/Online-tools-/tools/age-calculator.html</loc>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://YOUR-GITHUB-USERNAME.github.io/YOUR-REPOSITORY/tools/emi-calculator.html</loc>
+        <loc>https://suhagthakor339-ops.github.io/Online-tools-/tools/emi-calculator.html</loc>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://YOUR-GITHUB-USERNAME.github.io/YOUR-REPOSITORY/tools/unit-converter.html</loc>
+        <loc>https://suhagthakor339-ops.github.io/Online-tools-/tools/unit-converter.html</loc>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
