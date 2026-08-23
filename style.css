@@ -287,7 +287,37 @@ footer p {
     opacity: 0.9;
 }
 
+.footer-links {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+}
 
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+    opacity: 1;
+}
+
+@media (max-width: 600px) {
+
+    .footer-links {
+        gap: 10px 15px;
+    }
+
+    .footer-links a {
+        font-size: 13px;
+    }
+}
 /* =========================
    TABLET
 ========================= */
