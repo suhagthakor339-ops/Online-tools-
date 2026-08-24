@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>QR Code Generator - Free Online Tool</title>
 
     <meta name="description"
-        content="Create QR codes online for free from text, URLs and other information.">
+        content="Create QR codes online for free from text, URLs and links. Customize QR size and color and download your QR code easily.">
+
+    <meta name="keywords"
+        content="QR code generator, free QR generator, create QR code, QR code maker, URL QR code">
+
+    <meta name="robots" content="index, follow">
+
+    <link rel="canonical"
+        href="https://suhagthakor339-ops.github.io/Online-tools-/tools/qr-generator.html">
+
 
     <style>
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -21,6 +33,7 @@
             background: #f5f8ff;
             color: #172033;
             padding: 20px;
+            line-height: 1.6;
         }
 
         .container {
@@ -70,6 +83,7 @@
             border: 1px solid #ccd3df;
             border-radius: 8px;
             font-size: 15px;
+            background: white;
         }
 
         button {
@@ -103,13 +117,16 @@
             display: none;
         }
 
-        #qrCanvas {
-            max-width: 100%;
-            height: auto;
+        #qrGenerated {
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .result {
-            display: none;
+        #qrGenerated img,
+        #qrGenerated canvas {
+            max-width: 100%;
+            height: auto;
         }
 
         .back {
@@ -119,7 +136,50 @@
             color: #1769ff;
         }
 
+
+        /* SEO CONTENT */
+
+        .seo-content {
+            margin-top: 45px;
+            padding-top: 30px;
+            border-top: 1px solid #e5eaf2;
+            text-align: left;
+        }
+
+        .seo-content h2 {
+            margin: 28px 0 10px;
+            font-size: 23px;
+            color: #172033;
+        }
+
+        .seo-content p {
+            color: #667085;
+            margin-bottom: 15px;
+        }
+
+        .seo-content ol {
+            padding-left: 25px;
+            color: #667085;
+        }
+
+        .seo-content li {
+            margin-bottom: 8px;
+        }
+
+        .faq h3 {
+            margin-top: 20px;
+            margin-bottom: 5px;
+            font-size: 17px;
+            color: #172033;
+        }
+
+        .faq p {
+            margin-bottom: 12px;
+        }
+
+
         @media (max-width: 480px) {
+
             .container {
                 margin: 10px auto;
                 padding: 25px 15px;
@@ -132,13 +192,69 @@
             .options {
                 flex-direction: column;
             }
+
+            .seo-content h2 {
+                font-size: 21px;
+            }
+
         }
+
     </style>
+
+
+    <!-- FAQ STRUCTURED DATA -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Is this QR code generator free?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. You can create QR codes online for free using this QR code generator."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What can I use to create a QR code?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You can create a QR code from text, website URLs and other information."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I download the QR code?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. After generating the QR code, you can download it as a PNG image."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I change the QR code size and color?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. You can select the QR code size and choose a QR code color before generating it."
+                }
+            }
+        ]
+    }
+    </script>
+
 </head>
+
 
 <body>
 
+
 <div class="container">
+
+
+    <!-- TOOL -->
 
     <h1>🔲 QR Code Generator</h1>
 
@@ -146,48 +262,167 @@
         Create a QR code from text, links or any information.
     </p>
 
+
     <textarea
         id="qrText"
         placeholder="Enter text or website URL..."
     ></textarea>
 
+
     <div class="options">
 
         <select id="qrSize">
-            <option value="200">200 × 200</option>
-            <option value="300" selected>300 × 300</option>
-            <option value="400">400 × 400</option>
-            <option value="500">500 × 500</option>
+
+            <option value="200">
+                200 × 200
+            </option>
+
+            <option value="300" selected>
+                300 × 300
+            </option>
+
+            <option value="400">
+                400 × 400
+            </option>
+
+            <option value="500">
+                500 × 500
+            </option>
+
         </select>
+
 
         <input
             type="color"
             id="qrColor"
             value="#000000"
+            title="QR Code Color"
         >
 
     </div>
+
 
     <button onclick="generateQR()">
         🔲 Generate QR Code
     </button>
 
+
     <div id="qrBox">
 
-        <canvas id="qrCanvas"></canvas>
+        <div id="qrGenerated"></div>
 
-        <div class="result" id="result">
+    </div>
 
-            <button
-                class="download"
-                onclick="downloadQR()"
-            >
-                ⬇️ Download QR Code
-            </button>
+
+    <!-- SEO CONTENT -->
+
+    <section class="seo-content">
+
+
+        <h2>
+            Free QR Code Generator Online
+        </h2>
+
+        <p>
+            Create QR codes online for free from website URLs,
+            text and other information. Customize the QR code
+            size and color, then download it as a PNG image.
+        </p>
+
+
+        <h2>
+            How to Create a QR Code
+        </h2>
+
+        <ol>
+
+            <li>
+                Enter your text or website URL in the box.
+            </li>
+
+            <li>
+                Select the QR code size.
+            </li>
+
+            <li>
+                Choose a QR code color if needed.
+            </li>
+
+            <li>
+                Click the "Generate QR Code" button.
+            </li>
+
+            <li>
+                Download the generated QR code.
+            </li>
+
+        </ol>
+
+
+        <h2>
+            Where Can QR Codes Be Used?
+        </h2>
+
+        <p>
+            QR codes can be used for website links, contact
+            information, digital menus, product information,
+            event details and many other purposes.
+        </p>
+
+
+        <h2>
+            Frequently Asked Questions
+        </h2>
+
+
+        <div class="faq">
+
+
+            <h3>
+                Is this QR code generator free?
+            </h3>
+
+            <p>
+                Yes. You can create QR codes online for free
+                using this QR code generator.
+            </p>
+
+
+            <h3>
+                What can I use to create a QR code?
+            </h3>
+
+            <p>
+                You can create a QR code from text, website URLs
+                and other information.
+            </p>
+
+
+            <h3>
+                Can I download the QR code?
+            </h3>
+
+            <p>
+                Yes. After generating the QR code, you can
+                download it as a PNG image.
+            </p>
+
+
+            <h3>
+                Can I change the QR code size and color?
+            </h3>
+
+            <p>
+                Yes. You can select the QR code size and choose
+                a QR code color before generating it.
+            </p>
+
 
         </div>
 
-    </div>
+
+    </section>
+
 
     <a
         class="back"
@@ -196,23 +431,26 @@
         ← Back to All Tools
     </a>
 
+
 </div>
 
 
 <!-- QR CODE LIBRARY -->
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
 
 <script>
 
-let qrCode;
-
 
 function generateQR() {
+
 
     const text =
         document.getElementById(
             "qrText"
         ).value.trim();
+
 
     const size =
         Number(
@@ -220,6 +458,7 @@ function generateQR() {
                 "qrSize"
             ).value
         );
+
 
     const color =
         document.getElementById(
@@ -234,6 +473,7 @@ function generateQR() {
         );
 
         return;
+
     }
 
 
@@ -243,27 +483,20 @@ function generateQR() {
         );
 
 
-    qrBox.innerHTML = "";
-
-
-    const qrHolder =
-        document.createElement(
-            "div"
+    const qrGenerated =
+        document.getElementById(
+            "qrGenerated"
         );
 
 
-    qrHolder.id =
-        "qrGenerated";
-
-
-    qrBox.appendChild(
-        qrHolder
-    );
+    qrGenerated.innerHTML =
+        "";
 
 
     new QRCode(
-        qrHolder,
+        qrGenerated,
         {
+
             text: text,
 
             width: size,
@@ -276,6 +509,7 @@ function generateQR() {
 
             correctLevel:
                 QRCode.CorrectLevel.H
+
         }
     );
 
@@ -298,22 +532,26 @@ function generateQR() {
         downloadQR;
 
 
-    qrBox.appendChild(
+    qrGenerated.appendChild(
         downloadButton
     );
 
 
     qrBox.style.display =
         "block";
+
 }
 
 
+
 function downloadQR() {
+
 
     const canvas =
         document.querySelector(
             "#qrGenerated canvas"
         );
+
 
     if (!canvas) {
 
@@ -322,6 +560,7 @@ function downloadQR() {
         );
 
         return;
+
     }
 
 
@@ -342,9 +581,11 @@ function downloadQR() {
 
 
     link.click();
+
 }
 
 </script>
+
 
 </body>
 </html>
