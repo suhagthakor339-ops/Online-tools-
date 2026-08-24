@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Image Compressor - Free Online Tool</title>
 
     <meta name="description"
-        content="Compress images online for free and reduce image file size while maintaining good quality.">
+        content="Compress images online for free and reduce image file size while maintaining good quality. Fast, simple and easy image compressor.">
+
+    <meta name="keywords"
+        content="image compressor, compress image, image compressor online, reduce image size, compress JPG, compress PNG">
+
+    <meta name="robots" content="index, follow">
+
+    <link rel="canonical"
+        href="https://suhagthakor339-ops.github.io/Online-tools-/tools/image-compressor.html">
+
 
     <style>
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -21,6 +33,7 @@
             background: #f5f8ff;
             color: #172033;
             padding: 20px;
+            line-height: 1.6;
         }
 
         .container {
@@ -108,7 +121,50 @@
             color: #1769ff;
         }
 
+
+        /* SEO CONTENT */
+
+        .seo-content {
+            margin-top: 45px;
+            padding-top: 30px;
+            border-top: 1px solid #e5eaf2;
+            text-align: left;
+        }
+
+        .seo-content h2 {
+            margin: 28px 0 10px;
+            font-size: 23px;
+            color: #172033;
+        }
+
+        .seo-content p {
+            color: #667085;
+            margin-bottom: 15px;
+        }
+
+        .seo-content ol {
+            padding-left: 25px;
+            color: #667085;
+        }
+
+        .seo-content li {
+            margin-bottom: 8px;
+        }
+
+        .faq h3 {
+            margin-top: 20px;
+            margin-bottom: 5px;
+            font-size: 17px;
+            color: #172033;
+        }
+
+        .faq p {
+            margin-bottom: 12px;
+        }
+
+
         @media (max-width: 480px) {
+
             .container {
                 margin: 10px auto;
                 padding: 25px 15px;
@@ -117,19 +173,76 @@
             h1 {
                 font-size: 25px;
             }
+
+            .seo-content h2 {
+                font-size: 21px;
+            }
+
         }
+
     </style>
+
+
+    <!-- FAQ SEO STRUCTURED DATA -->
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "Is this image compressor free?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. You can use this image compressor online for free."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Do I need to install software?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. The image compressor works directly in your web browser."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Can I choose the compression quality?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. You can choose the desired compression level using the quality slider."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Are my images uploaded to a server?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The image is processed in your browser using JavaScript for compression."
+            }
+        }
+    ]
+}
+    </script>
+
 </head>
+
 
 <body>
 
+
     <div class="container">
+
+
+        <!-- TOOL -->
 
         <h1>🖼️ Image Compressor</h1>
 
         <p class="description">
             Compress your image and reduce its file size easily.
         </p>
+
 
         <div class="upload-box">
 
@@ -143,12 +256,19 @@
 
         </div>
 
+
         <div class="quality-box">
 
             <label>
+
                 Compression Quality:
-                <strong><span id="qualityValue">70</span>%</strong>
+
+                <strong>
+                    <span id="qualityValue">70</span>%
+                </strong>
+
             </label>
+
 
             <input
                 type="range"
@@ -160,11 +280,17 @@
 
         </div>
 
+
         <button onclick="compressImage()">
             Compress Image
         </button>
 
-        <img id="preview" alt="Compressed image preview">
+
+        <img
+            id="preview"
+            alt="Compressed image preview"
+        >
+
 
         <div class="result" id="result">
 
@@ -183,37 +309,180 @@
                 <strong id="savedSize">-</strong>
             </p>
 
+
             <br>
 
-            <a id="downloadLink" download="compressed-image.jpg">
+
+            <a
+                id="downloadLink"
+                download="compressed-image.jpg"
+            >
+
                 <button class="download">
                     ⬇️ Download Image
                 </button>
+
             </a>
 
         </div>
 
-        <a class="back" href="../index.html">
+
+        <!-- SEO CONTENT -->
+
+        <section class="seo-content">
+
+
+            <h2>
+                Free Image Compressor Online
+            </h2>
+
+            <p>
+                Compress images online for free and reduce image
+                file size without complicated steps. This image
+                compressor helps you reduce the size of image files
+                directly in your web browser.
+            </p>
+
+
+            <h2>
+                How to Compress an Image
+            </h2>
+
+            <ol>
+
+                <li>
+                    Select an image from your device.
+                </li>
+
+                <li>
+                    Choose your preferred compression quality.
+                </li>
+
+                <li>
+                    Click the "Compress Image" button.
+                </li>
+
+                <li>
+                    Check the compressed file size.
+                </li>
+
+                <li>
+                    Download your compressed image.
+                </li>
+
+            </ol>
+
+
+            <h2>
+                Why Compress Images?
+            </h2>
+
+            <p>
+                Smaller image files can save storage space and make
+                images easier to upload, share and use on websites.
+                Image compression can also help reduce the amount
+                of data required when transferring image files.
+            </p>
+
+
+            <h2>
+                Frequently Asked Questions
+            </h2>
+
+
+            <div class="faq">
+
+
+                <h3>
+                    Is this image compressor free?
+                </h3>
+
+                <p>
+                    Yes. You can use this image compressor online
+                    for free.
+                </p>
+
+
+                <h3>
+                    Do I need to install software?
+                </h3>
+
+                <p>
+                    No. The image compressor works directly in
+                    your web browser.
+                </p>
+
+
+                <h3>
+                    Can I choose the compression quality?
+                </h3>
+
+                <p>
+                    Yes. You can choose the desired compression
+                    level using the quality slider.
+                </p>
+
+
+                <h3>
+                    Are my images uploaded to a server?
+                </h3>
+
+                <p>
+                    The image is processed in your browser using
+                    JavaScript for compression.
+                </p>
+
+
+            </div>
+
+
+        </section>
+
+
+        <a
+            class="back"
+            href="../index.html"
+        >
             ← Back to All Tools
         </a>
+
 
     </div>
 
 
+
     <script>
 
-        const imageInput = document.getElementById("imageInput");
-        const quality = document.getElementById("quality");
-        const qualityValue = document.getElementById("qualityValue");
 
-        quality.addEventListener("input", function () {
-            qualityValue.textContent = quality.value;
-        });
+        const imageInput =
+            document.getElementById("imageInput");
+
+
+        const quality =
+            document.getElementById("quality");
+
+
+        const qualityValue =
+            document.getElementById("qualityValue");
+
+
+        quality.addEventListener(
+            "input",
+            function () {
+
+                qualityValue.textContent =
+                    quality.value;
+
+            }
+        );
+
 
 
         function formatBytes(bytes) {
 
-            if (bytes === 0) return "0 Bytes";
+            if (bytes === 0)
+                return "0 Bytes";
+
 
             const units = [
                 "Bytes",
@@ -222,126 +491,211 @@
                 "GB"
             ];
 
-            const i = Math.floor(
-                Math.log(bytes) / Math.log(1024)
-            );
+
+            const i =
+                Math.floor(
+                    Math.log(bytes) /
+                    Math.log(1024)
+                );
+
 
             return (
+
                 parseFloat(
-                    (bytes / Math.pow(1024, i)).toFixed(2)
+                    (
+                        bytes /
+                        Math.pow(1024, i)
+                    ).toFixed(2)
                 )
+
                 + " "
+
                 + units[i]
+
             );
+
         }
+
 
 
         function compressImage() {
 
-            const file = imageInput.files[0];
+
+            const file =
+                imageInput.files[0];
+
 
             if (!file) {
-                alert("Please select an image first.");
+
+                alert(
+                    "Please select an image first."
+                );
+
                 return;
+
             }
 
-            const reader = new FileReader();
 
-            reader.onload = function (event) {
-
-                const img = new Image();
-
-                img.onload = function () {
-
-                    const canvas = document.createElement("canvas");
-
-                    canvas.width = img.width;
-                    canvas.height = img.height;
-
-                    const ctx = canvas.getContext("2d");
-
-                    ctx.drawImage(
-                        img,
-                        0,
-                        0,
-                        img.width,
-                        img.height
-                    );
-
-                    const imageQuality =
-                        Number(quality.value) / 100;
-
-                    canvas.toBlob(
-                        function (blob) {
-
-                            if (!blob) {
-                                alert("Compression failed.");
-                                return;
-                            }
-
-                            const compressedURL =
-                                URL.createObjectURL(blob);
-
-                            document.getElementById(
-                                "preview"
-                            ).src = compressedURL;
-
-                            document.getElementById(
-                                "preview"
-                            ).style.display = "block";
+            const reader =
+                new FileReader();
 
 
-                            document.getElementById(
-                                "originalSize"
-                            ).textContent =
-                                formatBytes(file.size);
+            reader.onload =
+                function (event) {
 
 
-                            document.getElementById(
-                                "compressedSize"
-                            ).textContent =
-                                formatBytes(blob.size);
+                    const img =
+                        new Image();
 
 
-                            const saved =
-                                file.size - blob.size;
-
-                            document.getElementById(
-                                "savedSize"
-                            ).textContent =
-                                saved > 0
-                                ? formatBytes(saved)
-                                : "No size reduction";
+                    img.onload =
+                        function () {
 
 
-                            const downloadLink =
-                                document.getElementById(
-                                    "downloadLink"
+                            const canvas =
+                                document.createElement(
+                                    "canvas"
                                 );
 
-                            downloadLink.href =
-                                compressedURL;
+
+                            canvas.width =
+                                img.width;
 
 
-                            document.getElementById(
-                                "result"
-                            ).style.display = "block";
+                            canvas.height =
+                                img.height;
 
-                        },
-                        "image/jpeg",
-                        imageQuality
-                    );
+
+                            const ctx =
+                                canvas.getContext(
+                                    "2d"
+                                );
+
+
+                            ctx.drawImage(
+                                img,
+                                0,
+                                0,
+                                img.width,
+                                img.height
+                            );
+
+
+                            const imageQuality =
+                                Number(
+                                    quality.value
+                                ) / 100;
+
+
+                            canvas.toBlob(
+
+                                function (blob) {
+
+
+                                    if (!blob) {
+
+                                        alert(
+                                            "Compression failed."
+                                        );
+
+                                        return;
+
+                                    }
+
+
+                                    const compressedURL =
+                                        URL.createObjectURL(
+                                            blob
+                                        );
+
+
+                                    const preview =
+                                        document.getElementById(
+                                            "preview"
+                                        );
+
+
+                                    preview.src =
+                                        compressedURL;
+
+
+                                    preview.style.display =
+                                        "block";
+
+
+                                    document.getElementById(
+                                        "originalSize"
+                                    ).textContent =
+                                        formatBytes(
+                                            file.size
+                                        );
+
+
+                                    document.getElementById(
+                                        "compressedSize"
+                                    ).textContent =
+                                        formatBytes(
+                                            blob.size
+                                        );
+
+
+                                    const saved =
+                                        file.size -
+                                        blob.size;
+
+
+                                    document.getElementById(
+                                        "savedSize"
+                                    ).textContent =
+
+                                        saved > 0
+
+                                        ? formatBytes(
+                                            saved
+                                        )
+
+                                        : "No size reduction";
+
+
+                                    const downloadLink =
+                                        document.getElementById(
+                                            "downloadLink"
+                                        );
+
+
+                                    downloadLink.href =
+                                        compressedURL;
+
+
+                                    document.getElementById(
+                                        "result"
+                                    ).style.display =
+                                        "block";
+
+
+                                },
+
+                                "image/jpeg",
+
+                                imageQuality
+
+                            );
+
+                        };
+
+
+                    img.src =
+                        event.target.result;
 
                 };
 
-                img.src = event.target.result;
-
-            };
 
             reader.readAsDataURL(file);
+
         }
 
     </script>
+
 
 </body>
 </html>
