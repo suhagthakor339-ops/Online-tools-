@@ -1,27 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Age Calculator - Calculate Exact Age Online</title>
+    <title>Age Calculator - Free Online Tool</title>
 
     <meta name="description"
-        content="Calculate your exact age in years, months and days with this free online age calculator. Simple, fast and mobile friendly.">
-
-    <meta name="keywords"
-        content="age calculator, calculate age, exact age calculator, date of birth calculator, age in years months days">
-
-    <meta name="robots" content="index, follow">
-
-    <link rel="canonical"
-        href="https://suhagthakor339-ops.github.io/Online-tools-/tools/age-calculator.html">
-
+        content="Calculate your exact age in years, months and days with our free online age calculator.">
 
     <style>
-
         * {
             box-sizing: border-box;
             margin: 0;
@@ -33,7 +21,6 @@
             background: #f5f8ff;
             color: #172033;
             padding: 20px;
-            line-height: 1.6;
         }
 
         .container {
@@ -66,12 +53,26 @@
             margin-bottom: 8px;
         }
 
-        input[type="date"] {
+        .date-input {
             width: 100%;
-            padding: 13px;
+            padding: 14px;
             border: 1px solid #ccd3df;
             border-radius: 9px;
-            font-size: 16px;
+            font-size: 18px;
+            outline: none;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .date-input:focus {
+            border-color: #1769ff;
+        }
+
+        .hint {
+            color: #667085;
+            font-size: 13px;
+            margin-top: 7px;
+            text-align: center;
         }
 
         .calculate {
@@ -128,6 +129,14 @@
             font-size: 13px;
         }
 
+        .error {
+            display: none;
+            color: #d92d20;
+            margin-top: 10px;
+            font-size: 14px;
+            text-align: center;
+        }
+
         .back {
             display: block;
             text-align: center;
@@ -135,46 +144,6 @@
             color: #1769ff;
             text-decoration: none;
         }
-
-
-        /* SEO CONTENT */
-
-        .seo-content {
-            margin-top: 45px;
-            padding-top: 30px;
-            border-top: 1px solid #e5eaf2;
-            text-align: left;
-        }
-
-        .seo-content h2 {
-            margin: 28px 0 10px;
-            font-size: 23px;
-        }
-
-        .seo-content p {
-            color: #667085;
-            margin-bottom: 15px;
-        }
-
-        .seo-content ol {
-            padding-left: 25px;
-            color: #667085;
-        }
-
-        .seo-content li {
-            margin-bottom: 8px;
-        }
-
-        .faq h3 {
-            margin-top: 20px;
-            margin-bottom: 5px;
-            font-size: 17px;
-        }
-
-        .faq p {
-            margin-bottom: 12px;
-        }
-
 
         @media (max-width: 480px) {
 
@@ -187,83 +156,26 @@
                 font-size: 25px;
             }
 
-            .age-main {
-                font-size: 24px;
+            .date-input {
+                font-size: 17px;
             }
 
             .details {
                 grid-template-columns: 1fr;
             }
-
-            .seo-content h2 {
-                font-size: 21px;
-            }
-
         }
-
     </style>
-
-
-    <!-- FAQ STRUCTURED DATA -->
-
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": "Is this age calculator free?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes. This age calculator is free to use online."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "How does the age calculator work?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Enter your date of birth and the calculator determines your age in completed years, months and days."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Can I calculate my exact age?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes. The calculator shows your age in years, months and days."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Can I use the age calculator on a mobile phone?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes. The age calculator is designed to work on mobile phones, tablets and computers."
-                }
-            }
-        ]
-    }
-    </script>
-
 </head>
-
 
 <body>
 
-
 <div class="container">
-
-
-    <!-- TOOL -->
 
     <h1>🎂 Age Calculator</h1>
 
     <p class="description">
         Calculate your exact age in years, months and days.
     </p>
-
 
     <div class="input-group">
 
@@ -272,12 +184,26 @@
         </label>
 
         <input
-            type="date"
+            type="text"
             id="birthDate"
+            class="date-input"
+            placeholder="DD/MM/YYYY"
+            inputmode="numeric"
+            maxlength="10"
+            autocomplete="bday"
         >
 
-    </div>
+        <p class="hint">
+            Example: 25/08/1998
+        </p>
 
+        <p
+            class="error"
+            id="errorMessage"
+        >
+        </p>
+
+    </div>
 
     <button
         class="calculate"
@@ -285,7 +211,6 @@
     >
         🧮 Calculate Age
     </button>
-
 
     <div
         class="result"
@@ -298,155 +223,26 @@
         >
         </div>
 
-
         <div class="details">
 
             <div class="detail">
-
-                <strong id="years">
-                    0
-                </strong>
-
-                <span>
-                    Years
-                </span>
-
+                <strong id="years">0</strong>
+                <span>Years</span>
             </div>
 
-
             <div class="detail">
-
-                <strong id="months">
-                    0
-                </strong>
-
-                <span>
-                    Months
-                </span>
-
+                <strong id="months">0</strong>
+                <span>Months</span>
             </div>
 
-
             <div class="detail">
-
-                <strong id="days">
-                    0
-                </strong>
-
-                <span>
-                    Days
-                </span>
-
+                <strong id="days">0</strong>
+                <span>Days</span>
             </div>
 
         </div>
 
     </div>
-
-
-    <!-- SEO CONTENT -->
-
-    <section class="seo-content">
-
-
-        <h2>
-            Free Age Calculator Online
-        </h2>
-
-        <p>
-            Calculate your exact age online using your date of
-            birth. This free age calculator shows your age in
-            years, months and days.
-        </p>
-
-
-        <h2>
-            How to Calculate Your Age
-        </h2>
-
-        <ol>
-
-            <li>
-                Select your date of birth.
-            </li>
-
-            <li>
-                Click the "Calculate Age" button.
-            </li>
-
-            <li>
-                Your exact age will be displayed in years,
-                months and days.
-            </li>
-
-        </ol>
-
-
-        <h2>
-            What Can an Age Calculator Be Used For?
-        </h2>
-
-        <p>
-            An age calculator can be useful for checking your
-            current age, planning birthdays, completing forms,
-            checking age requirements and calculating the time
-            since a particular date of birth.
-        </p>
-
-
-        <h2>
-            Frequently Asked Questions
-        </h2>
-
-
-        <div class="faq">
-
-
-            <h3>
-                Is this age calculator free?
-            </h3>
-
-            <p>
-                Yes. This age calculator is free to use online.
-            </p>
-
-
-            <h3>
-                How does the age calculator work?
-            </h3>
-
-            <p>
-                Enter your date of birth and the calculator
-                determines your age in completed years, months
-                and days.
-            </p>
-
-
-            <h3>
-                Can I calculate my exact age?
-            </h3>
-
-            <p>
-                Yes. The calculator shows your age in years,
-                months and days.
-            </p>
-
-
-            <h3>
-                Can I use the age calculator on a mobile phone?
-            </h3>
-
-            <p>
-                Yes. The age calculator is designed to work on
-                mobile phones, tablets and computers.
-            </p>
-
-
-        </div>
-
-
-    </section>
-
 
     <a
         class="back"
@@ -455,26 +251,130 @@
         ← Back to All Tools
     </a>
 
-
 </div>
 
 
 <script>
 
+const birthInput =
+    document.getElementById("birthDate");
+
+
+/* Automatically add / while typing */
+birthInput.addEventListener(
+    "input",
+    function () {
+
+        let value =
+            birthInput.value.replace(
+                /\D/g,
+                ""
+            );
+
+        if (value.length > 8) {
+            value = value.substring(0, 8);
+        }
+
+        if (value.length >= 5) {
+
+            value =
+                value.substring(0, 2) +
+                "/" +
+                value.substring(2, 4) +
+                "/" +
+                value.substring(4);
+
+        }
+        else if (value.length >= 3) {
+
+            value =
+                value.substring(0, 2) +
+                "/" +
+                value.substring(2);
+
+        }
+
+        birthInput.value = value;
+
+    }
+);
+
+
+function showError(message) {
+
+    const error =
+        document.getElementById(
+            "errorMessage"
+        );
+
+    error.textContent =
+        message;
+
+    error.style.display =
+        "block";
+
+    document.getElementById(
+        "result"
+    ).style.display =
+        "none";
+}
+
 
 function calculateAge() {
 
-
-    const birthInput =
-        document.getElementById(
-            "birthDate"
-        ).value;
+    const input =
+        birthInput.value.trim();
 
 
-    if (!birthInput) {
+    if (!input) {
 
-        alert(
-            "Please select your date of birth."
+        showError(
+            "Please enter your date of birth."
+        );
+
+        return;
+    }
+
+
+    const parts =
+        input.split("/");
+
+
+    if (
+        parts.length !== 3 ||
+        parts[0].length !== 2 ||
+        parts[1].length !== 2 ||
+        parts[2].length !== 4
+    ) {
+
+        showError(
+            "Please enter date in DD/MM/YYYY format."
+        );
+
+        return;
+    }
+
+
+    const day =
+        Number(parts[0]);
+
+    const month =
+        Number(parts[1]);
+
+    const year =
+        Number(parts[2]);
+
+
+    if (
+        day < 1 ||
+        day > 31 ||
+        month < 1 ||
+        month > 12 ||
+        year < 1
+    ) {
+
+        showError(
+            "Please enter a valid date."
         );
 
         return;
@@ -483,17 +383,41 @@ function calculateAge() {
 
     const birthDate =
         new Date(
-            birthInput + "T00:00:00"
+            year,
+            month - 1,
+            day
         );
+
+
+    /* Check invalid dates like 31/02/1998 */
+    if (
+        birthDate.getFullYear() !== year ||
+        birthDate.getMonth() !== month - 1 ||
+        birthDate.getDate() !== day
+    ) {
+
+        showError(
+            "This is not a valid calendar date."
+        );
+
+        return;
+    }
 
 
     const today =
         new Date();
 
+    today.setHours(
+        0,
+        0,
+        0,
+        0
+    );
+
 
     if (birthDate > today) {
 
-        alert(
+        showError(
             "Date of birth cannot be in the future."
         );
 
@@ -503,26 +427,20 @@ function calculateAge() {
 
     let years =
         today.getFullYear()
-        -
-        birthDate.getFullYear();
-
+        - birthDate.getFullYear();
 
     let months =
         today.getMonth()
-        -
-        birthDate.getMonth();
-
+        - birthDate.getMonth();
 
     let days =
         today.getDate()
-        -
-        birthDate.getDate();
+        - birthDate.getDate();
 
 
     if (days < 0) {
 
         months--;
-
 
         const previousMonth =
             new Date(
@@ -530,7 +448,6 @@ function calculateAge() {
                 today.getMonth(),
                 0
             );
-
 
         days +=
             previousMonth.getDate();
@@ -575,14 +492,18 @@ function calculateAge() {
 
 
     document.getElementById(
+        "errorMessage"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
         "result"
     ).style.display =
         "block";
-
 }
 
 </script>
-
 
 </body>
 </html>
